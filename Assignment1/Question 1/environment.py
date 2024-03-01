@@ -4,15 +4,10 @@ from itertools import product
 
 class GridWorld:
     def __init__(self):
-        self.state_id = {
-            state: id for id, state in enumerate(list(product(range(5), range(5))))
-        }
+        self.state_id = {state: id for id, state in enumerate(list(product(range(5), range(5))))}
         self.actions = [(-1, 0), (0, 1), (0, -1), (1, 0)]
         
-        self.state_action_map = {
-            (state, action): i
-            for i, (state, action) in enumerate( product(list(self.state_id.keys()), [0, 1, 2, 3]))
-        }
+        self.state_action_map = {(state, action): i for i, (state, action) in enumerate( product(list(self.state_id.keys()), [0, 1, 2, 3])) }
 
         self.unintended_actions = { (-1, 0): [(0, 1), (0, -1)], (0, 1): [(1, 0), (-1, 0)], (0, -1): [(-1, 0), (1, 0)], (1, 0): [(0, -1), (0, 1)],}
 
@@ -58,8 +53,7 @@ class GridWorld:
             a_prob = 0
         if not check_if_in_grid(ab_state):
             ab_prob = 0
-        return [[intended_state, intended_prob], [a_state, a_prob], [ab_state, ab_prob], [stay_state, stay_prob],
-        ]
+        return [[intended_state, intended_prob], [a_state, a_prob], [ab_state, ab_prob], [stay_state, stay_prob],]
     
 
     def get_transition_probability_map(self, state, action):
@@ -85,6 +79,7 @@ class GridWorld:
         if not check_if_in_grid(ab_state):
             ab_state = state
         return [ [intended_state, self.transition_prob["intended"]], [a_state, self.transition_prob["cw"]], [ab_state, self.transition_prob["ccw"]], [stay_state, self.transition_prob["stay"]],]
+    
 
     def get_reward(self, state):
         if isinstance(state, int):
