@@ -1,3 +1,7 @@
-# Reinforcement-Learning
+# Course: Reinforcement-Learning in CMI
 
-### Submitted the solutions to question 1 and 2
+## Topics included in this repo:
+
+#### The solutions to Assignment 1
+
+#### The solution to Assignment 2 
